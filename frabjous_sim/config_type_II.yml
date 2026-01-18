@@ -1,0 +1,38 @@
+count: 1000
+snr: 50
+add_noise: True
+peaks: 1
+
+dm_range:
+  lower_dm_value: 0.0
+  upper_dm_value: 0.3 
+
+scattering_measure:
+  sm_lower: 0.0
+  sm_upper: 2.0
+
+component_0:
+  arrival_time: 3.0
+
+  width: 
+    width_lower_value: 0.005
+    width_upper_value: 0.030
+
+  fluence:
+    fluence_lower_value: 5.0
+    fluence_upper_value: 50.0
+
+  spectral_index:
+    spec_lower_value: 0.0
+    spec_upper_value: 0.0
+
+  spectral_running: 
+    sr_lower_value: 0.0
+    sr_upper_value: 0.0 
+
+central_freq: 
+  lower_value: 425
+  upper_value: 775
+bandwidth:
+  lower_value: 95
+  upper_value: 395
