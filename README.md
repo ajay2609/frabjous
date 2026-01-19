@@ -10,5 +10,5 @@ Using the Simulation Scripts
 3. python <simulation_script>.py
 4. The script generates simulated FRB dynamic spectra along with metadata, which can be used directly for CNN training and evaluation.
 
-How to use the interpolation script
+How to use the interpolation script which fills in the missing information for frequency channels that are masked due to RFI \
 python interpolate_chime_frbs.py --input-dir /path/to/chime_h5_files --output chime_interp 
