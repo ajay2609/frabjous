@@ -1,0 +1,17 @@
+Simpulse code is mix of python and Cython programming language.
+Go to git simpulse (https://github.com/kmsmith137/simpulse) and clone the repository to your machine.
+
+Now follow the Readme:
+Install Cython if your system does not have it and fftw3 also.Both can be installed in linix using 
+pip install cython 
+sudo apt-get install libfftw3-dev
+
+Add PYTHONPATH to your environment. if you are installing in the virtual environmetn. note the path you are providing in the 
+Makefile.local which you need to create in the top level simpulse directory. if you are in ubuntu use Makefile.local.orangutan 
+in the site folder.
+
+Also don't forget to add the correct path for environment variables : PYTHONPATH and LD_LIBRARY_PATH
+Especially if your are installing in the virtual environment.
+add this line to ~/.bashrc so that these paths are initialised everytime terminal is opened.
+export PYTHONPATH=$PYTHONPATH= path to your python files diestory
+export LD_LIBRARY_PATH = $LD_LIBRARY_PATH = library diectory path in your system
