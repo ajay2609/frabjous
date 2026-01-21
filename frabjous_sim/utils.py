@@ -61,7 +61,7 @@ def apply_spectral_index_and_running(array, shape, spectral_index, spectral_runn
     2-D Numpy array with specific spectral properties for each component
 
     """
-    print( sum(sum(array)) )
+    #print( sum(sum(array)) )
     int_flux = sum( sum(array) )
     non_zero = np.where(array[0])
     N = shape[0]  # number of freq channels
@@ -104,15 +104,15 @@ def fraunhoffer_pattern(image,theta):
     freq  = np.linspace(400,800,256)    #frequencies in MHz
     aperture = 80   ## CHIME largest baseline
     int_flux = sum(sum(image))
-    print(int_flux)
+    #print(int_flux)
     for i in range(0 ,len(image)):
         fact = freq[i]                    # factor is the ratio of frequency (in MHz) to speed of light c (represents the wavelength in the diffraction pattern )
         #print(fact)
         phi =  np.pi * aperture * (fact/300) *np.sin( np.deg2rad(theta) )
         image[i] = image[i]* (np.sin(phi) / phi )**2
     
-    print(sum(sum(image)))
+    #print(sum(sum(image)))
     image = image *( int_flux/sum(sum(image)) )
-    print( sum(sum(image))  )
+    #print( sum(sum(image))  )
     return image     
     
