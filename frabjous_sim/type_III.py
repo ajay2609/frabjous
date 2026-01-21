@@ -36,10 +36,10 @@ class CreateFRB:
     class to generate a sample of type III bursts
     """
 
-    def __init__(self, config_file: str = "generate_FRBs_config_type_C.yml"):
+    def __init__(self, config_file: str = "config_type_III.yml"):
         with open(config_file) as f:
             self.input_params = yaml.safe_load(f)
-
+        self.snr = self.input_params["snr"]
         self.noise = self.input_params["add_noise"]
         self.dm_range = self.input_params["dm_range"]
         self.scattering_measure = self.input_params["scattering_measure"]
@@ -157,7 +157,7 @@ class CreateFRB:
                 frb_dict,
                 central_freq[i],
                 bandwidth[i],
-                snr,
+                self.snr,
             )
 
             data.append(img)
@@ -176,7 +176,7 @@ class CreateFRB:
         snr,
     ):
         """
-        Generate a single Type-C FRB dynamic spectrum.
+        Generate a single Type-III FRB dynamic spectrum.
         """
 
         ts = np.zeros((NFREQ, PULSE_NT))
@@ -232,7 +232,7 @@ if __name__ == "__main__":
     start = time.time()
 
     simulator = CreateFRB()
-    data, frb_header, min_max = simulator.simulate_frbs(snr=10.0)
+    data, frb_header, min_max = simulator.simulate_frbs(snr=50.0)
 
     write_out_frbs(data, frb_header, min_max, "C")
     

@@ -17,9 +17,7 @@ from utils import (
     write_out_frbs,
 )
 
-# ----------------------------
 # Constants
-# ----------------------------
 
 PULSE_NT = 512
 NFREQ = 256
@@ -101,14 +99,15 @@ def generate_frb(frb_dict, snr, add_noise=True):
 # Population simulation
 # ----------------------------
 
-def simulate_frbs(config_file, snr):
+def simulate_frbs(config_file):
     """
-    Simulate a population of Type-A FRBs.
+    Simulate a population of Type-I FRBs.
     """
 
     with open(config_file) as f:
         params = yaml.safe_load(f)
-
+    
+    snr = params["snr"]
     count = params["count"]
 
     dm_vals = np.linspace(
@@ -199,25 +198,24 @@ def simulate_frbs(config_file, snr):
 
 if __name__ == "__main__":
 
-    CONFIG_FILE = "generate_FRBs_config_type_A.yml"
-    SNR = 50.0
+    CONFIG_FILE = "config_type_I.yml"
 
-    data, frb_header, min_max = simulate_frbs(CONFIG_FILE, SNR)
+    data, frb_header, min_max = simulate_frbs(CONFIG_FILE)
 
     write_out_frbs(data, frb_header, min_max, "A")
 
-    for i, img in enumerate(data[:1000]):
-
-        frb = frb_header[i]
-
-        plt.imshow(img, aspect="auto")
-        plt.xlabel("Time")
-        plt.ylabel("Frequency")
-        plt.title(
-            f"Width={frb['components'][0]['width']:.4f}, "
-            f"Fluence={frb['components'][0]['fluence']:.2f}"
-        )
-        plt.colorbar()
-        plt.savefig(f"type_A_images/frb_type_A_{i}.png", dpi=150)
-        plt.clf()
+#    for i, img in enumerate(data[:1000]):
+#
+#        frb = frb_header[i]
+#
+#        plt.imshow(img, aspect="auto")
+#        plt.xlabel("Time")
+#        plt.ylabel("Frequency")
+#        plt.title(
+#            f"Width={frb['components'][0]['width']:.4f}, "
+#            f"Fluence={frb['components'][0]['fluence']:.2f}"
+#        )
+#        plt.colorbar()
+#        plt.savefig(f"type_I_images/frb_type_I_{i}.png", dpi=150)
+#        plt.clf()
 

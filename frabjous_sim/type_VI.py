@@ -36,7 +36,7 @@ CROP_HALF_WIDTH = 128
 
 
 
-class CreateFRBTypeD:
+class create_frb:
     """
     Generate a population of Type-D FRBs.
     """
@@ -59,7 +59,7 @@ class CreateFRBTypeD:
             self.input_params = yaml.safe_load(f)
 
         self.csvfile = pd.read_csv(chime_catalog)
-
+        self.snr = self.input_params["snr"]
         self.noise = self.input_params["add_noise"]
         self.count = self.input_params["count"]
 
@@ -70,7 +70,7 @@ class CreateFRBTypeD:
 
     # --------------------------------------------------------
 
-    def simulate_frbs(self, snr: float = 20.0):
+    def simulate_frbs(self):
         """
         Generate a population of Type-D FRBs.
 
@@ -157,7 +157,7 @@ class CreateFRBTypeD:
                 ],
             }
 
-            img = self.generate_frb(frb_dict, snr)
+            img = self.generate_frb(frb_dict, self.snr)
 
             data.append(img)
             frb_metadata.append(frb_dict)
@@ -221,8 +221,8 @@ if __name__ == "__main__":
 
     start = time.time()
 
-    simulator = CreateFRBTypeD()
-    data, frb_header, min_max = simulator.simulate_frbs(snr=50.0)
+    simulator = create_frb()
+    data, frb_header, min_max = simulator.simulate_frbs()
 
     write_out_frbs(data, frb_header, min_max, "D")
 

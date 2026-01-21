@@ -37,13 +37,14 @@ class CreateFRB:
 
     def __init__(
         self,
-        config_file: str = "generate_FRBs_config_type_C1.yml",
+        config_file: str = "config_type_IV.yml",
         chime_catalog: str = "chimefrbcat1.csv",
     ):
         with open(config_file) as f:
             self.input_params = yaml.safe_load(f)
 
         self.csvfile = pd.read_csv(chime_catalog)
+        self.snr = self.input_params["snr"]
 
         self.noise = self.input_params["add_noise"]
         self.dm_range = self.input_params["dm_range"]
@@ -234,7 +235,7 @@ class CreateFRB:
 
     # -------------------------------------------------
 
-    def _choose_width(width_array, separation):
+    def _choose_width(self, width_array, separation):
         """
         Choose a width smaller than half the component separation.
         """
@@ -248,7 +249,7 @@ if __name__ == "__main__":
     start = time.time()
 
     simulator = CreateFRB()
-    data, frb_header, min_max = simulator.simulate_frbs(snr=10.0)
+    data, frb_header, min_max = simulator.simulate_frbs(snr=50.0)
 
     write_out_frbs(data, frb_header, min_max, "C1")
     

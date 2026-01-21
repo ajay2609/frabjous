@@ -29,7 +29,7 @@ class create_frb:
     """
     
     #### Read configuration file
-    with open("generate_FRBs_config_type_C2.yml") as file:
+    with open("config_type_V.yml") as file:
         try:
             input_params = yaml.safe_load(file)
             print(input_params)
@@ -253,7 +253,7 @@ if __name__ == "__main__":
 
     start = time.time()
 
-    simulator = CreateFRB()
+    simulator = create_frb()
     data, frb_header, min_max = simulator.simulate_frbs()
 
     write_out_frbs(data, frb_header, min_max, "C2")

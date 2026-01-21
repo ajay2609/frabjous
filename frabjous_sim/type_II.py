@@ -234,7 +234,7 @@ def simulate_frbs(config_file):
 
 if __name__ == "__main__":
 
-    CONFIG_FILE = "generate_FRBs_config_type_B.yml"
+    CONFIG_FILE = "config_type_II.yml"
 
     data, frb_header, min_max = simulate_frbs(CONFIG_FILE)
 
