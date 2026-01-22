@@ -108,7 +108,7 @@ def load_chime_data(data_file, label_file):
     
     # Load labels
     with open(label_file, 'r') as f:
-        labels = [line.strip() for line in f.readlines()]
+        labels = [line.strip() for line in f.readlines() if line.strip()]
     
     logger.info(f"Loaded {len(labels)} labels")
     
