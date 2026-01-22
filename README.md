@@ -6,7 +6,7 @@ The framework provides tools to simulate FRB dynamic spectra, preprocess real da
 
 The repository includes scripts and configuration files used to simulate FRB dynamic spectra of different morphological classes. These simulations are used to generate labelled datasets for training the CNN models.
 
-Using the Simulation Scripts
+1. Using the Simulation Scripts
 1. Go to the simulation directory (frabjous_sim)
 ```bash
 cd frabjous_sim
@@ -25,7 +25,21 @@ python interpolate_chime_frbs.py --input-dir /path/to/chime_h5_files --output ch
 ```
 The script outputs interpolated FRB dynamic spectra in numpy format, which can be used directly in the inference pipelines.
 
-Inference using a set of binary models where each model distinguishes between a pair of FRB morphological classes.
+3. Inference using a set of binary models where each model distinguishes between a pair of FRB morphological classes.
 ```bash
+python inference/run_binary_inference.py \
+  --data chime_interp_frbs.npz \
+  --models-dir models/binary \
+  --output-dir results/
 ```
 Outputs : all\_scores.npy: confidence scores for each morphological class for every input FRB and All\_scores.txt: final predicted class for each FRB.
+
+4. Inference Using a Multi-Class Model
+
+As an alternative to binary classification, FRABJOUS also provides a single multi-class CNN model trained to classify all FRB morphologies simultaneously.
+```bash
+python inference/run_binary_inference.py \
+  --data chime_interp_frbs.npz \
+  --models-dir models/ \
+  --output-dir results/
+```
