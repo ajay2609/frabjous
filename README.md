@@ -47,7 +47,7 @@ python inference/inference_mutliclass_model.py \
 ```
 ## Examples 
 
-The repository includes example training scripts and configuration files for training both binary and multi-class CNN models. These scripts allow retraining models with custom simulation parameters and alternative network architectures.
+The repository includes example jupyter notebook for training both binary and multi-class CNN models. These notebook can be modified for retraining models with custom simulation parameters and alternative network architectures.
 
 [typeIIvsIV](notebooks/classify_IIvsIV.ipynb) shows how to obtain a optimised model to distinguish between type II and type IV archetype and [typeIIvsIV](notebooks/classify_IIvsIV.ipynb) between type II and V archetype. [typeIIvsIV](notebooks/classify_IIvsIV.ipynb) shows how to obtain a optimised models for mutli-class classification for five types i.e type I, II, II, IV and V.
 
