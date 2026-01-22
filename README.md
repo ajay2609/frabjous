@@ -6,7 +6,7 @@ The framework provides tools to simulate FRB dynamic spectra, preprocess real da
 
 The repository includes scripts and configuration files used to simulate FRB dynamic spectra of different morphological classes. These simulations are used to generate labelled datasets for training the CNN models.
 
-##Using the Simulation Scripts
+## Using the Simulation Scripts
 1. Go to the simulation directory (frabjous_sim)
 ```bash
 cd frabjous_sim
@@ -18,7 +18,7 @@ python simulate_<morphology_type>.py
 ```
 4. The script generates simulated FRB dynamic spectra along with metadata, which can be used directly for CNN training and evaluation.
 
-##Inerpolating masked channels
+## Inerpolating masked channels
 In general data from radio telescope is affected with RFI, particularly presence of narrowband RFI leads to masking of frequency channels. For testing with first CHIME/FRB catalog we developed our interpolation method to fill in the missing in the missing information. This can also be used to for interpolation for interpolation for data with other telescopes at different frequencies.
 Here is in example of how to run the interpolation script for chime FRBs 
 ```bash
@@ -26,7 +26,7 @@ python interpolate_chime_frbs.py --input-dir /path/to/chime_h5_files --output ch
 ```
 The script outputs interpolated FRB dynamic spectra in numpy format, which can be used directly in the inference pipelines.
 
-##Inference using a set of binary models
+## Inference using a set of binary models
 here each model distinguishes between a pair of FRB morphological classes.
 ```bash
 python inference/run_binary_inference.py \
@@ -36,7 +36,7 @@ python inference/run_binary_inference.py \
 ```
 Outputs : all\_scores.npy: confidence scores for each morphological class for every input FRB and All\_scores.txt: final predicted class for each FRB.
 
-##Inference Using a Multi-Class Model
+## Inference Using a Multi-Class Model
 
 As an alternative to classification with a set of binary models, inference can be run with single mutli-class classifier which gives confidence for all archetypes.
 ```bash
