@@ -47,6 +47,7 @@ python inference/run_binary_inference.py \
 ```
 ## Examples 
 
-The repository includes example training scripts and configuration files for training both binary and multi-class CNN models. These scripts allow retraining models with custom simulation parameters and alternative network architectures.
-[typeIIvsIV](notebooks/classify_IIvsIV.ipynb)
-Details are provided within the corresponding training scripts.```
+The repository includes example training scripts and configuration files for training both binary and multi-class CNN models. These scripts allow retraining models with custom simulation parameters and alternative network architectures. \\
+[typeIIvsIV](notebooks/classify_IIvsIV.ipynb) shows how to obtain a optimised model to distinguish between type II and type IV archetype and [typeIIvsIV](notebooks/classify_IIvsIV.ipynb) between type II and V archetype. [typeIIvsIV](notebooks/classify_IIvsIV.ipynb) shows how to obtain a optimised models for mutli-class classification for five types i.e type I, II, II, IV and V.
+[obtain-confusion-matrix](notebooks/cm_from_binary_classifiers.ipynb) shows the confusion matrix after running inference for the bursts in the first CHIME/FRB catalog using set of binary models and single multi-class classifier. 
+Details are provided within the corresponding jupyter notebooks. 
