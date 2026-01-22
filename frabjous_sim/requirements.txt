@@ -1,0 +1,6 @@
+# Simulation-specific libraries           #confirm the version you have or adjust accordingly
+#To install simpulse check the README of repo https://github.com/kmsmith137/simpulse 
+numpy==1.25.0                     # Scientific computing
+matplotlib==3.7.2                 # Plotting library
+scipy==1.10.1                     # Log-normal distributions
+pyyaml==6.0                       # For parsing YAML configuration files
