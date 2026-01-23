@@ -238,18 +238,19 @@ if __name__ == "__main__":
     
     print(f"Simulation completed in {time.time() - start:.1f} s")
 
-    for i, img in enumerate(data[:1000]):
-        frb = frb_header[i]
-        plt.imshow(img, aspect="auto")
-        plt.xlabel("Time")
-        plt.ylabel("Frequency")
-        plt.title(
-            f"Width={frb['components'][0]['width']:.4f}, "
-            f"Fluence={frb['components'][0]['fluence']:.2f}"
-        )
-        plt.colorbar()
-        plt.savefig(f"type_C_images/frb_type_C_{i}.png", dpi=150)
-        plt.clf()
+#comment out the part if you want to write the images for inspection
+#for i, img in enumerate(data[:1000]):
+#       frb = frb_header[i]
+#       plt.imshow(img, aspect="auto")
+#        plt.xlabel("Time")
+#        plt.ylabel("Frequency")
+#        plt.title(
+#            f"Width={frb['components'][0]['width']:.4f}, "
+#            f"Fluence={frb['components'][0]['fluence']:.2f}"
+#        )
+#        plt.colorbar()
+#        plt.savefig(f"type_C_images/frb_type_C_{i}.png", dpi=150)
+#        plt.clf()
 
     
                 
