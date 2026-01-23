@@ -23,7 +23,14 @@ import h5py
 import matplotlib.pyplot as plt
 from scipy.interpolate import interp1d
 from scipy.stats import median_abs_deviation
+import logging
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(message)s",
+    datefmt="%H:%M:%S"
+)
+logger = logging.getLogger(__name__)
 
 
 # ==============================
@@ -221,17 +228,18 @@ def main():
 
     rng = np.random.default_rng(args.seed)
     files = glob.glob(os.path.join(args.input_dir, "*.h5"))
-
+    
     bursts = []
     model_bursts = []
     msnrs = []
 
-    for fname in files:
+    for i, fname in enumerate(files, start=1):
         with h5py.File(fname, "r") as f:
             img, model_img, msnr = reshape_burst(f, rng)
             bursts.append(img)
             model_bursts.append(model_img)
             msnrs.append(msnr)
+            logger.info(f"Processed {i} bursts")
 
     np.savez_compressed(f"{args.output}_data.npz", np.array(bursts))
     np.savez_compressed(f"{args.output}_model.npz", np.array(model_bursts))
