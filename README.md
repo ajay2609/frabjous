@@ -49,8 +49,8 @@ python inference/inference_mutliclass_model.py \
 
 The repository includes example jupyter notebook for training both binary and multi-class CNN models. These notebook can be modified for retraining models with custom simulation parameters and alternative network architectures.
 
-[typeIIvsIV](notebooks/classify_IIvsIV.ipynb) shows how to obtain a optimised model to distinguish between type II and type IV archetype and [typeIIvsIV](notebooks/classify_IIvsIV.ipynb) between type II and V archetype. [typeIIvsIV](notebooks/classify_IIvsIV.ipynb) shows how to obtain a optimised models for mutli-class classification for five types i.e type I, II, II, IV and V.
+This [notebook](notebooks/classify_IIvsIV.ipynb) shows how to obtain a optimised model to distinguish between type II and type IV archetype and [type II vs V](notebooks/classify_IIvsV.ipynb) between type II and V archetype. The [Notebook](notebooks/single_mutliclass_model_chime.ipynb) shows how to obtain a optimised models for mutli-class classification for five types i.e type I, II, II, IV and V.
 
-This [notebook](notebooks/cm_from_binary_classifiers.ipynb) shows the confusion matrix after running inference for the bursts in the first CHIME/FRB catalog using set of binary models and single multi-class classifier. 
+This [notebook](cm_after_inferences.ipynb) shows the confusion matrix after running inference for the bursts in the first CHIME/FRB catalog using set of binary models and single multi-class classifier. 
 
 Details are provided within the corresponding jupyter notebooks. 
