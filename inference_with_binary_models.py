@@ -89,16 +89,13 @@ if not interp_path.exists():
 
 test_images = read_to_test_data(interp_path)
 
-#testing = models[0]( test_images[:10] )
-#print( len(testing) )
 
-print(test_images[:20].shape)
 logger.info("Running predictions on 2-D dynamic spectra...")
 # Generate predictions
 predictions = []
 
 for model in models:
-    predictions.append(model(test_images[:20])) 
+    predictions.append(model(test_images)) 
 
 
 logger.info("Predictions on 2-D dynamic spectra completed.")
@@ -133,7 +130,7 @@ thresholds[4][3] = 0.5     # C2 vs C1
 max_index = []
 confidences = []
 
-n_samples = len(test_images[:10])
+n_samples = len(test_images)
 logger.info("computing matrix with the predictions for each dynamic spectra...")
 for num in range(n_samples):
     test_matrix = conf_matrix_from_pred(predictions, num)
