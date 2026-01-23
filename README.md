@@ -7,6 +7,7 @@ The framework provides tools to simulate FRB dynamic spectra, preprocess real da
 The repository includes scripts and configuration files used to simulate FRB dynamic spectra of different morphological classes. These simulations are used to generate labelled datasets for training the CNN models.
 
 ## Using the Simulation Scripts
+Check the requirements.txt in the frabjou_sim directory to install the prerequisites.
 1. Go to the simulation directory (frabjous_sim)
 ```bash
 cd frabjous_sim
@@ -14,7 +15,7 @@ cd frabjous_sim
 2. Edit the YAML configuration file corresponding to the desired morphology to set parameter ranges (e.g. DM, scattering, drift rate, S/N, number of bursts).
 3. Run the simulation for a particular archetype 
 ```bash
-python simulate_<morphology_type>.py
+python type_<morphology_type>.py
 ```
 4. The script generates simulated FRB dynamic spectra along with metadata, which can be used directly for CNN training and evaluation.
 
