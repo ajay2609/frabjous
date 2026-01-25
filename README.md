@@ -13,15 +13,15 @@ Check the requirements.txt in the frabjou_sim directory to install the prerequis
 cd frabjous_sim
 ```
 2. Edit the YAML configuration file corresponding to the desired morphology to set parameter ranges (e.g. DM, scattering, drift rate, S/N, number of bursts).
-3. Run the simulation for a particular archetype 
+3. Simulate a particular archetype 
 ```bash
 python type_<morphology_type>.py
 ```
 4. The script generates simulated FRB dynamic spectra along with metadata, which can be used directly for CNN training and evaluation.
 
 ## Interpolating masked channels
-In general data from radio telescope is affected with RFI, particularly presence of narrowband RFI leads to masking of frequency channels. For testing with first CHIME/FRB catalog we developed our interpolation method to fill in the missing in the missing information. This can also be used to for interpolation for interpolation for data with other telescopes at different frequencies.
-Here is in example of how to run the interpolation script for chime FRBs. Before that download h5 files for all the bursts from first CHIME/FRB catalog.  
+In general data from radio telescope is affected with RFI, particularly presence of narrowband RFI leads to masking of frequency channels. For testing with first CHIME/FRB catalog we developed our interpolation method to fill in the missing information. This can also be used for interpolation for data with other telescopes at different frequencies.
+Here is an example of how to run the interpolation script for Chime FRBs. Before that, download h5 files for all the bursts from first CHIME/FRB catalog.  
 ```bash
 python interpolate_chime_frbs.py --input-dir /path/to/chime_h5_files --output chime_interp_frbs 
 ```
@@ -35,11 +35,11 @@ python inference/inference_with_binary_models.py \
   --models-dir models/ \
   --output-dir results/
 ```
-Outputs : all\_scores.npy: confidence scores for each morphological class for every input FRB and All\_scores.txt: final predicted class for each FRB.
+Outputs: all\_scores.npy: confidence scores for each morphological class for every input FRB and All\_scores.txt: final predicted class for each FRB.
 
 ## Inference Using a Multi-Class Model
 
-As an alternative to classification with a set of binary models, inference can be run with single mutli-class classifier which gives confidence for all archetypes.
+As an alternative to classification with a set of binary models, inference can be run with a single mutli-class classifier which gives confidence for all archetypes.
 ```bash
 python inference/inference_mutliclass_model.py \
   --data files/chime_interp_frbs.npz \
@@ -48,10 +48,10 @@ python inference/inference_mutliclass_model.py \
 ```
 ## Examples 
 
-The repository includes example jupyter notebook for training both binary and multi-class CNN models. These notebook can be modified for retraining models with custom simulation parameters and alternative network architectures.
+The repository includes an example jupyter notebook for training both binary and multi-class CNN models. These notebooks can be modified for retraining models with custom simulation parameters and alternative network architectures.
 
-This [notebook](notebooks/classify_IIvsIV.ipynb) shows how to obtain a optimised model to distinguish between type II and type IV archetype and [type II vs V](notebooks/classify_IIvsV.ipynb) between type II and V archetype. The [Notebook](notebooks/single_mutliclass_model_chime.ipynb) shows how to obtain a optimised models for mutli-class classification for five types i.e type I, II, II, IV and V.
+This [notebook](notebooks/classify_IIvsIV.ipynb) shows how to obtain an optimised model to distinguish between type II and type IV archetypes, and [type II vs V](notebooks/classify_IIvsV.ipynb) between type II and V archetypes. The [Notebook](notebooks/single_mutliclass_model_chime.ipynb) shows how to obtain an optimised model for multi-class classification for five types i.e type I, II, II, IV and V.
 
-This [notebook](cm_after_inferences.ipynb) shows the confusion matrix after running inference for the bursts in the first CHIME/FRB catalog using set of binary models and single multi-class classifier. 
+This [notebook](cm_after_inferences.ipynb) shows the confusion matrix after running inference for the bursts in the first CHIME/FRB catalog using a set of binary models and a single multi-class classifier. 
 
 Details are provided within the corresponding jupyter notebooks. 
